@@ -4,8 +4,8 @@ import javax.swing.JTable;
 
 public class MetodosBD {
 	
-	Pool metodosPool = new Pool();
-	DefaultTableModel = modeloTabla;
+	//Pool metodosPool = new Pool();
+	//DefaultTableModel = modeloTabla;
 	
 	public void Buscar(String valor, String filtro, JTable tabla) {
 		
