@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Datos.UsuarioDAO;
+import Domain.MetodosBD;
 import Domain.Receta;
 
 import javax.swing.JProgressBar;
@@ -32,7 +33,7 @@ public class VentanaBuscar extends JFrame {
 
 	private JPanel LayoutManager;
 	private final JProgressBar progressBar = new JProgressBar();
-	private JTable tableDatos;
+	private JTable tblDatos;
 	private JTextField tFBusqueda;
 
 	public static void main(String[] args) {
@@ -95,7 +96,7 @@ public class VentanaBuscar extends JFrame {
         panel.setBounds(0, 0, 516, 57);
         LayoutManager.add(panel);
         
-        JLabel lblNuevaReceta = new JLabel("RECETA");
+        JLabel lblNuevaReceta = new JLabel("BUSCAR");
         panel.add(lblNuevaReceta);
         lblNuevaReceta.setForeground(new Color(0, 0, 0));
         lblNuevaReceta.setBackground(new Color(192, 192, 192));
@@ -105,34 +106,20 @@ public class VentanaBuscar extends JFrame {
         scrollPane.setBounds(36, 168, 470, 202);
         LayoutManager.add(scrollPane);
         
-        tableDatos = new JTable();
-        scrollPane.setViewportView(tableDatos);
-        tableDatos.setFont(new Font("Tahoma", Font.PLAIN, 13));
-        tableDatos.setModel(new DefaultTableModel(
+        tblDatos = new JTable();
+        scrollPane.setViewportView(tblDatos);
+        tblDatos.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        tblDatos.setModel(new DefaultTableModel(
         	new Object[][] {
-        		{null, null, null},
-        		{null, null, null},
-        		{null, null, null},
-        		{null, null, null},
-        		{null, null, null},
-        		{null, null, null},
-        		{null, null, null},
-        		{null, null, null},
-        		{null, null, null},
-        		{null, null, null},
-        		{null, null, null},
-        		{null, null, null},
-        		{null, null, null},
-        		{null, null, null},
-        		{null, null, null},
         	},
         	new String[] {
-        		"Nombre", "Ingrediente principal", "Id "
+        		"Id ", "Nombre", "Ingredientes", "IngredientePrincipal"
         	}
         ));
-        tableDatos.getColumnModel().getColumn(0).setPreferredWidth(89);
-        tableDatos.getColumnModel().getColumn(1).setPreferredWidth(118);
-        tableDatos.getColumnModel().getColumn(2).setPreferredWidth(47);
+        tblDatos.getColumnModel().getColumn(0).setPreferredWidth(47);
+        tblDatos.getColumnModel().getColumn(1).setPreferredWidth(89);
+        tblDatos.getColumnModel().getColumn(2).setPreferredWidth(118);
+        tblDatos.getColumnModel().getColumn(3).setPreferredWidth(148);
         
         JLabel lblBuscarPor = new JLabel("Buscar por: ");
         lblBuscarPor.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -140,8 +127,8 @@ public class VentanaBuscar extends JFrame {
         LayoutManager.add(lblBuscarPor);
         
         JComboBox cBFiltro = new JComboBox();
-        cBFiltro.setModel(new DefaultComboBoxModel(new String[] {"Nombre ", "Ingrediente Principal", "Id"}));
-        cBFiltro.setBounds(112, 111, 95, 22);
+        cBFiltro.setModel(new DefaultComboBoxModel(new String[] {"id", "nombre ", "ingredientes", "ingredientePrincipal"}));
+        cBFiltro.setBounds(112, 111, 120, 22);
         LayoutManager.add(cBFiltro);
         
         tFBusqueda = new JTextField();
@@ -150,6 +137,16 @@ public class VentanaBuscar extends JFrame {
         tFBusqueda.setColumns(10);
         
         JButton btnBuscar = new JButton("Buscar");
+        btnBuscar.addActionListener(new ActionListener() {
+        	
+        	MetodosBD metodosBD = new MetodosBD();
+        	
+        	public void actionPerformed(ActionEvent e) {
+        	
+        		metodosBD.Buscar(tFBusqueda.getText(),cBFiltro.getSelectedItem().toString(), tblDatos);
+        	
+        	}
+        });
         btnBuscar.setBounds(427, 111, 89, 23);
         LayoutManager.add(btnBuscar);
            

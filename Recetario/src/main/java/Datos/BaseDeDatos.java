@@ -25,6 +25,10 @@ public class BaseDeDatos {
             throw new RuntimeException("Error al registrar el controlador de la base de datos", e);
         }
     }
+    
+    public BaseDeDatos() {
+    	
+    }
 
     public boolean ejecutarConsulta(String consulta) throws Exception {
         Connection conexion = null;

@@ -12,12 +12,12 @@ public class Conexion {
     private static final String JDBC_USER = "root";
     private static final String JDBC_PASSWORD = "";
 
-    // Método para obtener una conexión a la base de datos
+    // Metodo para obtener una conexion a la base de datos
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD);
     }
 
-    // Método para cerrar un ResultSet
+    // Metodo para cerrar un ResultSet
     public static void close(ResultSet resultSet) {
         if (resultSet != null) {
             try {
@@ -28,7 +28,7 @@ public class Conexion {
         }
     }
 
-    // Método para cerrar un PreparedStatement
+    // Mï¿½todo para cerrar un PreparedStatement
     public static void close(PreparedStatement preparedStatement) {
         if (preparedStatement != null) {
             try {
@@ -39,7 +39,7 @@ public class Conexion {
         }
     }
 
-    // Método para cerrar una conexión
+    // Mï¿½todo para cerrar una conexiï¿½n
     public static void close(Connection connection) {
         if (connection != null) {
             try {
