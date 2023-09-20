@@ -103,7 +103,7 @@ public class VentanaBuscar extends JFrame {
         lblNuevaReceta.setFont(new Font("Tahoma", Font.BOLD, 17));
         
         JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(36, 168, 470, 202);
+        scrollPane.setBounds(36, 157, 470, 202);
         LayoutManager.add(scrollPane);
         
         tblDatos = new JTable();
@@ -113,7 +113,7 @@ public class VentanaBuscar extends JFrame {
         	new Object[][] {
         	},
         	new String[] {
-        		"Id ", "Nombre", "Ingredientes", "IngredientePrincipal"
+        		"Id ", "Nombre", "Ingredientes", "Ingrediente Principal"
         	}
         ));
         tblDatos.getColumnModel().getColumn(0).setPreferredWidth(47);
@@ -143,6 +143,7 @@ public class VentanaBuscar extends JFrame {
         	
         	public void actionPerformed(ActionEvent e) {
         	
+        		System.out.println("metodo de busqueda");
         		metodosBD.Buscar(tFBusqueda.getText(),cBFiltro.getSelectedItem().toString(), tblDatos);
         	
         	}

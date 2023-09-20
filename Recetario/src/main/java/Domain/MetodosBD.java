@@ -42,7 +42,7 @@ public class MetodosBD {
 
 		try {
 			
-			System.out.println("Inicio conecion");
+			System.out.println("Inicio conection");
 			System.out.println("getConnection");
 			conect = conexion.getConnection();
 			
